@@ -62,8 +62,8 @@ if client_modbus.connect():
     while True:
         voltageRResponse = client_modbus.read_holding_registers(VOLTAGE_R_ADDRESS, count=COUNT, slave=SLAVE_ID)        
         voltageSResponse = client_modbus.read_holding_registers(VOLTAGE_S_ADDRESS, count=COUNT, slave=SLAVE_ID)
-        currentRResponse = client_modbus.read_holding_registers(CURRENT_R_ADDRESS, count=COUNT, slave=CURRENT_R_ADDRESS)
-        currentSResponse = client_modbus.read_holding_registers(CURRENT_S_ADDRESS, count=COUNT, slave=CURRENT_S_ADDRESS)
+        # currentRResponse = client_modbus.read_holding_registers(CURRENT_R_ADDRESS, count=COUNT, slave=CURRENT_R_ADDRESS)
+        # currentSResponse = client_modbus.read_holding_registers(CURRENT_S_ADDRESS, count=COUNT, slave=CURRENT_S_ADDRESS)
         
 
         if not voltageRResponse.isError() and not voltageSResponse.isError():
@@ -71,12 +71,12 @@ if client_modbus.connect():
             try:
                 voltageRValue = convert_to_float32(voltageRResponse.registers)
                 voltageSValue = convert_to_float32(voltageSResponse.registers)
-                currentRValue = convert_to_float32(currentRResponse.registers)
-                currentSValue = convert_to_float32(currentSResponse.registers)
+                # currentRValue = convert_to_float32(currentRResponse.registers)
+                # currentSValue = convert_to_float32(currentSResponse.registers)
                 print("Converted float32 voltageR:", voltageRValue)
                 print("Converted float32 voltageS:", voltageSValue)
-                print("Converted float32 currentR:", currentSValue)
-                print("Converted float32 currentS:", currentSValue)
+                # print("Converted float32 currentR:", currentSValue)
+                # print("Converted float32 currentS:", currentSValue)
                 # Prepare the JSON payload with both values
                 data = {
                     "data_type": "float",
